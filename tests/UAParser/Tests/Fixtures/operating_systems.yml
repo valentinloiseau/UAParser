@@ -13,3 +13,15 @@
 
 - ['Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/537.13+ (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2', Mac OS, 10, 6, 8]
 - ['Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_7; en-us) AppleWebKit/534.16+ (KHTML, like Gecko) Version/5.0.3 Safari/533.19.4', Mac OS, 10, 6, 7]
+
+- ['Mozilla/5.0 (iPhone; CPU iPhone OS 6_0_1 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A523 Safari/8536.25', iOS, 6, 0, 1]
+- ['Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_0 like Mac OS X; en-us) AppleWebKit/532.9 (KHTML, like Gecko) Version/4.0.5 Mobile/8A293 Safari/6531.22.7', iOS, 4, 0, null]
+- ['Mozilla/5.0 (iPad; CPU OS 5_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9B176 Safari/7534.48.3', iOS, 5, 1, null]
+- ['Mozilla/5.0 (iPad; U; CPU OS 4_3_5 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) CriOS/23.0.1271.100 Mobile/8L1 Safari/6533.18.5', iOS, 4, 3, 5]
+
+- ['Mozilla/5.0 (Linux; U; Android 2.3.7; en-us; HTC Desire Build/GRI40; CyanogenMod-7.2.0.1) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Saf', Android, 2, 3, 7]
+- ['Mozilla/5.0 (Linux; U; Android 4.0; en-gb; HTC_Desire_C_N/1.45.161.5 Build/IML74K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/', Android, 4, 0, null]
+
+- ['Mozilla/5.0 (BlackBerry; U; BlackBerry 9900; en) AppleWebKit/534.11+ (KHTML, like Gecko) Version/7.1.0.346 Mobile Safari/534.11+', BlackBerry OS, 7, 1, 0]
+- ['BlackBerry9700/5.0.0.862 Profile/MIDP-2.1 Configuration/CLDC-1.1 VendorID/331', BlackBerry OS, 5, 0, 0]
+- ['BlackBerry 9000: BlackBerry9000/4.6.0.65 Profile/MIDP-2.0 Configuration/CLDC-1.1 VendorID/102', BlackBerry OS, 4, 6, 0]

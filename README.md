@@ -10,7 +10,24 @@
 $uaParser = new \UAParser\UAParser();
 
 // parse a user agent string an get the result
-$result =  $uaParser->parse('Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20130406 Firefox/23.0');
+$result =  $uaParser->parse('Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20130406 Firefox/23.0.1');
+```
+
+Get `Browser` informations
+```php
+$result->getBowser()->getFamily() // Firefox
+$result->getBowser()->getMajor() // 23
+$result->getBowser()->getMinor() // 0
+$result->getBowser()->getPatch() // 1
+$result->getBowser()->getRenderingEngine() // Gecko
+```
+
+Get `OperatingSystem` informations
+```php
+$result->getOperatingSystem()->getFamily() // Mac OS
+$result->getOperatingSystem()->getMajor() // 10
+$result->getOperatingSystem()->getMinor() // 8
+$result->getOperatingSystem()->getPatch() // 4
 ```
 
 ## Credits

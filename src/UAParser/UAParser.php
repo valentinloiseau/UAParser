@@ -31,6 +31,7 @@ class UAParser implements UAParserInterface
     {
         $data = array(
             'browser'          => $this->parseBrowser($userAgent),
+            'device'           => $this->parseDevice($userAgent),
             'operating_system' => $this->parseOperatingSystem($userAgent),
         );
 
@@ -38,7 +39,7 @@ class UAParser implements UAParserInterface
     }
 
     /**
-     * Parse the browser
+     * Parse the user agent an extract the browser informations
      * 
      * @param string $userAgent the user agent string
      * 
@@ -85,7 +86,7 @@ class UAParser implements UAParserInterface
     }
 
     /**
-     * Parse the operating system
+     * Parse the user agent an extract the operating system informations
      * 
      * @param string $userAgent the user agent string
      * 
@@ -111,6 +112,38 @@ class UAParser implements UAParserInterface
                 $result['major']  = isset($operatingSystemRegex['major_replacement']) ? $operatingSystemRegex['major_replacement'] : $matches[2];
                 $result['minor']  = isset($operatingSystemRegex['minor_replacement']) ? $operatingSystemRegex['minor_replacement'] : $matches[3];
                 $result['patch']  = isset($operatingSystemRegex['patch_replacement']) ? $operatingSystemRegex['patch_replacement'] : $matches[4];
+
+                return $result;
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * Parse the user agent an extract the device informations
+     * 
+     * @param string $userAgent the user agent string
+     * 
+     * @return array
+     */
+    protected function parseDevice($userAgent)
+    {
+        $result = array(
+            'constructor' => 'Other',
+            'model'       => null,
+            'type'        => null,
+        );
+
+        foreach ($this->regexes['device_parsers'] as $deviceRegex) {
+            if (preg_match('/'.str_replace('/','\/',str_replace('\/','/', $deviceRegex['regex'])).'/i', $userAgent, $matches)) {
+                if (!isset($matches[1])) { $matches[1] = 'Other'; }
+                if (!isset($matches[2])) { $matches[2] = null; }
+                if (!isset($matches[3])) { $matches[3] = null; }
+                
+                $result['constructor'] = isset($deviceRegex['constructor_replacement']) ? str_replace('$1', $matches[1], $deviceRegex['constructor_replacement']) : $matches[1];
+                $result['model']       = isset($deviceRegex['model_replacement']) ? str_replace('$1', $matches[1], $deviceRegex['model_replacement']) : $matches[2];
+                $result['type']        = isset($deviceRegex['type_replacement']) ? $deviceRegex['type_replacement'] : $matches[3];
 
                 return $result;
             }

@@ -5,44 +5,80 @@ browser_parsers:
     - regex: '(Firefox)/(\d+)\.(\d+)'
     - regex: '(Chrome)/(\d+)\.(\d+)\.(\d+)'
     - regex: '(Version)/(\d+)\.(\d+)(?:\.(\d+))?.*Safari/'
-      family_replacement: 'Safari'
+      family_replacement: Safari
     - regex: '(Safari)/\d+'
     - regex: '(MSIE) (\d+)\.(\d+)'
-      family_replacement: 'Internet Explorer'
+      family_replacement: Internet Explorer
 
 rendering_engine_parsers:
     - regex: '(Gecko)'
     - regex: '(Trident)'
-    - regex: '(Presto)'
+    - regex: '(Presto|Windows 98)'
+      rendering_engine_replacement: Presto
     - regex: '(WebKit)'
     - regex: '(MSIE)'
-      rendering_engine_replacement: 'Trident'
+      rendering_engine_replacement: Trident
+    - regex: '(MSOffice 12)'
+      rendering_engine_replacement: Microsoft Word
+    - regex: '(Tasman)'
+
+device_parsers:
+    - regex: '(RIM Tablet OS)'
+      constructor_replacement: 'BlackBerry'
+      type_replacement: tablet
+    - regex: '(Play[Bb]ook)'
+      constructor_replacement: 'BlackBerry'
+      type_replacement: tablet
+    - regex: '(Black[bB]erry)'
+      constructor_replacement: BlackBerry
+      mobile_replacement: true
+    - regex: '(iPad)'
+      constructor_replacement: Apple
+      model_replacement: $1
+      type_replacement: tablet
+    - regex: '(iPod)'
+      constructor_replacement: Apple
+      model_replacement: $1
+      type_replacement: mobile
+    - regex: '(iPhone)'
+      constructor_replacement: Apple
+      model_replacement: $1
+      type_replacement: mobile
 
 operating_system_parsers:
+    - regex: '(Black[bB]erry).+Version/(\d+)\.(\d+)\.(\d+)'
+      family_replacement: 'BlackBerry OS'
+    - regex: '(Black[Bb]erry)[0-9a-z]+/(\d+)\.(\d+)\.(\d+)(?:\.(\d+))?'
+      family_replacement: 'BlackBerry OS'
+    - regex: '(Black[bB]erry)\s?(\d+)'
+      family_replacement: 'BlackBerry OS'
+    - regex: '(Android)[- ](\d+)\.(\d+)(?:[.\-]([a-z0-9]+))?'
+    - regex: '(CPU OS|iPhone OS) (\d+)_(\d+)(?:_(\d+))?'
+      family_replacement: iOS
     - regex: '(XBLWP7)'
-      family_replacement: 'Windows Phone'
-      major_replacement: '7'
+      family_replacement: Windows Phone
+      major_replacement: 7
     - regex: '(Windows NT 6\.2)'
-      family_replacement: 'Windows'
-      major_replacement: '8'
+      family_replacement: Windows
+      major_replacement: 8
     - regex: '(Windows NT 6\.1)'
-      family_replacement: 'Windows'
-      major_replacement: '7'
+      family_replacement: Windows
+      major_replacement: 7
     - regex: '(Windows (?:NT 5\.2|NT 5\.1))'
-      family_replacement: 'Windows'
-      major_replacement: 'XP'
+      family_replacement: Windows
+      major_replacement: XP
     - regex: '(Windows NT 6\.0)'
-      family_replacement: 'Windows'
-      major_replacement: 'Vista'
+      family_replacement: Windows
+      major_replacement: Vista
     - regex: '(Windows NT 5\.0)'
-      family_replacement: 'Windows'
-      major_replacement: '2000'
+      family_replacement: Windows
+      major_replacement: 2000
     - regex: '(Windows Phone) (\d+)\.(\d+)'
     - regex: '(Windows Phone) OS (\d+)\.(\d+)'
     - regex: '(Windows) (XP|98|95|CE)'
     - regex: '(Win(98))'
-      family_replacement: 'Windows'
+      family_replacement: Windows
     - regex: '(Win(95))'
-      family_replacement: 'Windows'
+      family_replacement: Windows
     - regex: '(Mac OS X) (\d+)[_.](\d+)(?:[_.](\d+))?'
-      family_replacement: 'Mac OS'
+      family_replacement: Mac OS

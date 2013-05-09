@@ -41,5 +41,9 @@ class Result implements ResultInterface
             $this->operatingSystem = new OperatingSystemResult();
             $this->operatingSystem->fromArray($data['operating_system']);
         }
+        if (isset($data['device'])) {
+            $this->device = new DeviceResult();
+            $this->device->fromArray($data['device']);
+        }
     }
 }
