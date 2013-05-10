@@ -30,6 +30,9 @@ class DeviceResultTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('mobile', $deviceResult->getType());
         $this->assertInternalType('string', $deviceResult->getType());
 
+        $this->assertEquals('Apple iPhone', $deviceResult->__toString());
+        $this->assertInternalType('string', $deviceResult->__toString());
+
         $this->assertTrue($deviceResult->isMobile());
         $this->assertTrue($deviceResult->is('mobile'));
         $this->assertFalse($deviceResult->isTablet());

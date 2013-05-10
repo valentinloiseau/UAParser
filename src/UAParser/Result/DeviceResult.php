@@ -23,6 +23,19 @@ class DeviceResult implements DeviceResultInterface
     private $type = 'desktop';
 
     /**
+     * To string
+     * 
+     * @return string
+     */
+    public function __toString()
+    {
+        return implode(' ', array(
+            $this->getConstructor(),
+            $this->getModel(),
+        ));
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function getConstructor()
@@ -54,27 +67,34 @@ class DeviceResult implements DeviceResultInterface
         return $type === $this->type;
     }
 
+    /**
+     * Check if the device is a mobile
+     * 
+     * @return boolean
+     */
     public function isMobile()
     {
         return $this->is('mobile');
     }
 
+    /**
+     * Check if the device is a tablet
+     * 
+     * @return boolean
+     */
     public function isTablet()
     {
         return $this->is('tablet');
     }
 
+    /**
+     * Check if the device is a desktop computer
+     * 
+     * @return boolean
+     */
     public function isDesktop()
     {
         return $this->is('desktop');
-    }
-
-    public function __toString()
-    {
-        return implode('.', array(
-            $this->getContructor(),
-            $this->getModel(),
-        ));
     }
 
     /**
