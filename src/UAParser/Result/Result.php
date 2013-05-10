@@ -13,6 +13,8 @@ class Result implements ResultInterface
 
     private $device = null;
 
+    private $emailClient = null;
+
     public function getBrowser()
     {
         return $this->browser;
@@ -26,6 +28,11 @@ class Result implements ResultInterface
     public function getDevice()
     {
         return $this->device;
+    }
+
+    public function getEmailClient()
+    {
+        return $this->emailClient;
     }
 
     /**
@@ -44,6 +51,10 @@ class Result implements ResultInterface
         if (isset($data['device'])) {
             $this->device = new DeviceResult();
             $this->device->fromArray($data['device']);
+        }
+        if (isset($data['email_client'])) {
+            $this->emailClient = new EmailClientResult();
+            $this->emailClient->fromArray($data['email_client']);
         }
     }
 }

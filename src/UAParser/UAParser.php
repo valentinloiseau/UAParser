@@ -33,6 +33,7 @@ class UAParser implements UAParserInterface
             'browser'          => $this->parseBrowser($userAgent),
             'device'           => $this->parseDevice($userAgent),
             'operating_system' => $this->parseOperatingSystem($userAgent),
+            'email_client'     => $this->parseEmailClient($userAgent, $referer),
         );
 
         return $this->prepareResult($data);
@@ -146,6 +147,60 @@ class UAParser implements UAParserInterface
                 $result['type']        = isset($deviceRegex['type_replacement']) ? $deviceRegex['type_replacement'] : $matches[3];
 
                 return $result;
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * Parse the user agent and optionnaly the refere an extract the email client informations
+     * 
+     * @param string $userAgent the user agent string
+     * @param string|null $referer A request referer to parse.
+     * 
+     * @return array
+     */
+    protected function parseEmailClient($userAgent, $referer = null)
+    {
+        $result = array(
+            'family' => 'Other',
+            'major'  => null,
+            'minor'  => null,
+            'patch'  => null,
+        );
+
+        foreach ($this->regexes['email_client_parsers'] as $emailClientRegexe) {
+            if (preg_match('/'.str_replace('/','\/',str_replace('\/','/', $emailClientRegexe['regex'])).'/i', $userAgent, $emailClientMatches)) {
+                if (!isset($emailClientMatches[1])) { $emailClientMatches[1] = 'Other'; }
+                if (!isset($emailClientMatches[2])) { $emailClientMatches[2] = null; }
+                if (!isset($emailClientMatches[3])) { $emailClientMatches[3] = null; }
+                if (!isset($emailClientMatches[4])) { $emailClientMatches[4] = null; }
+                if (!isset($emailClientMatches[5])) { $emailClientMatches[5] = null; }
+                
+                $result['family'] = isset($emailClientRegexe['family_replacement']) ? str_replace('$1', $emailClientMatches[1], $emailClientRegexe['family_replacement']) : $emailClientMatches[1];
+                $result['major']  = isset($emailClientRegexe['major_replacement']) ? $emailClientRegexe['major_replacement'] : $emailClientMatches[2];
+                $result['minor']  = isset($emailClientRegexe['minor_replacement']) ? $emailClientRegexe['minor_replacement'] : $emailClientMatches[3];
+                $result['patch']  = isset($emailClientRegexe['patch_replacement']) ? $emailClientRegexe['patch_replacement'] : $emailClientMatches[4];
+                $result['type']   = isset($emailClientRegexe['type_replacement']) ? $emailClientRegexe['type_replacement'] : $emailClientMatches[5];
+
+                goto referer;
+            }
+        }
+
+        referer:
+
+        if ($result['family'] == 'Other' && null !== $referer) {
+            foreach ($this->regexes['email_client_parsers'] as $emailClientRegexe) {
+                if (preg_match('/'.str_replace('/','\/',str_replace('\/','/', $emailClientRegexe['regex'])).'/i', $referer, $emailClientRefererMatches)) {
+                    if (!isset($emailClientRefererMatches[1])) { $emailClientRefererMatches[1] = 'Other'; }
+                    if (!isset($emailClientRefererMatches[2])) { $emailClientRefererMatches[2] = null; }
+                    
+                    $result['family'] = isset($emailClientRegexe['family_replacement']) ? str_replace('$1', $emailClientRefererMatches[1], $emailClientRegexe['family_replacement']) : $emailClientRefererMatches[1];
+                    $result['type']   = isset($emailClientRegexe['type_replacement']) ? $emailClientRegexe['type_replacement'] : $emailClientRefererMatches[2];
+
+                    return $result;
+                }
             }
         }
 

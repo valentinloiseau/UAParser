@@ -5,42 +5,51 @@ namespace UAParser\Result;
 /**
  * @author Benjamin Laugueux <benjamin@yzalis.com>
  */
-interface BrowserResultInterface
+interface EmailClientResultInterface
 {
     /**
-     * Returns the browser family name.
+     * Returns the email client family name.
      *
      * @return string
      */
     public function getFamily();
 
     /**
-     * Returns the browser major version.
+     * Returns the email client major version.
      *
      * @return string
      */
     public function getMajor();
 
     /**
-     * Returns the browser minor version.
+     * Returns the email client minor version.
      *
      * @return string
      */
     public function getMinor();
 
     /**
-     * Returns the browser patch version.
+     * Returns the email client patch version.
      *
      * @return string
      */
     public function getPatch();
 
     /**
-     * Returns the browser rendering engine.
+     * Returns the email client type.
      *
      * @return string
      */
-    public function getRenderingEngine();
+    public function getType();
+
+    /**
+     * Check the email client type.
+     *
+     * @param string $type Check if type is (webmail|desktop)
+     * 
+     * @return boolean
+     */
+    public function is($type);
 
     /**
      * Extracts data from an array.

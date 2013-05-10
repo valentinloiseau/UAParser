@@ -52,6 +52,19 @@ $result->getOperatingSystem()->is('tablet') // false
 $result->getOperatingSystem()->is('desktop') // false
 ```
 
+`EmailClientResult` API
+```php
+$result->getEmailClient()->getFamily() // Thunderbird
+$result->getEmailClient()->getMajor() // 3
+$result->getEmailClient()->getMinor() // 1
+$result->getEmailClient()->getPatch() // 2
+$result->getEmailClient()->getType() // desktop
+$result->getEmailClient()->isDesktop() // true
+$result->getEmailClient()->isWebmail() // false
+$result->getEmailClient()->is('desktop') // true
+$result->getEmailClient()->is('webmail') // false
+```
+
 ## Unit Tests
 
 To run unit tests, you'll need cURL and a set of dependencies you can install using Composer:
@@ -67,6 +80,10 @@ You're done.
 
 * Benjamin Laugueux <benjamin@yzalis.com>
 * [All contributors](https://github.com/yzalis/UAParser/contributors)
+
+Thanks for providing a huge amount of data to run tests:
+* [http://user-agent-string.info](http://user-agent-string.info)
+* [http://www.useragentstring.com](http://www.useragentstring.com)
 
 ## License
 
