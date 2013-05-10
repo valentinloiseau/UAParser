@@ -2,6 +2,8 @@
 
 namespace UAParser\Result;
 
+use Doctrine\Common\Inflector\Inflector;
+
 /**
  * @author Benjamin Laugueux <benjamin@yzalis.com>
  */
@@ -47,25 +49,12 @@ class Result implements ResultInterface
      */
     public function fromArray(array $data = array())
     {
-        if (isset($data['browser'])) {
-            $this->browser = new BrowserResult();
-            $this->browser->fromArray($data['browser']);
-        }
-        if (isset($data['operating_system'])) {
-            $this->operatingSystem = new OperatingSystemResult();
-            $this->operatingSystem->fromArray($data['operating_system']);
-        }
-        if (isset($data['device'])) {
-            $this->device = new DeviceResult();
-            $this->device->fromArray($data['device']);
-        }
-        if (isset($data['email_client'])) {
-            $this->emailClient = new EmailClientResult();
-            $this->emailClient->fromArray($data['email_client']);
-        }
-        if (isset($data['rendering_engine'])) {
-            $this->renderingEngine = new RenderingEngineResult();
-            $this->renderingEngine->fromArray($data['rendering_engine']);
+        foreach (get_class_vars(get_class($this)) as $name => $value) {
+            if (isset($data[Inflector::tableize($name)])) {
+                $class = "\\UAParser\\Result\\".Inflector::classify($name).'Result';
+                $this->{$name} = new $class();
+                $this->{$name}->fromArray($data[Inflector::tableize($name)]);
+            }
         }
     }
 }
