@@ -28,7 +28,6 @@ $result->getBowser()->getFamily() // Firefox
 $result->getBowser()->getMajor() // 23
 $result->getBowser()->getMinor() // 0
 $result->getBowser()->getPatch() // 1
-$result->getBowser()->getRenderingEngine() // Gecko
 ```
 
 `OperatingSystemResult` API
@@ -63,6 +62,12 @@ $result->getEmailClient()->isDesktop() // true
 $result->getEmailClient()->isWebmail() // false
 $result->getEmailClient()->is('desktop') // true
 $result->getEmailClient()->is('webmail') // false
+```
+
+`RenderingEngineResult` API
+```php
+$result->getRenderingEngine()->getFamily() // Trident
+$result->getRenderingEngine()->getVersion() // 4.0
 ```
 
 ## Unit Tests
