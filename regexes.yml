@@ -43,6 +43,10 @@ device_parsers:
       constructor_replacement: Apple
       model_replacement: $1
       type_replacement: mobile
+    - regex: '(lg)[e;\s-\/]+(\w+)*'
+      constructor_replacement: LG
+      model_replacement: $2
+      type_replacement: mobile
 
 operating_system_parsers:
     - regex: '(Symbian[ ]?os)/(\d+)\.(\d+)'
