@@ -98,8 +98,5 @@ class BrowserResult implements BrowserResultInterface
         if (isset($data['patch'])) {
             $this->patch = (int) $data['patch'];
         }
-        if (isset($data['rendering_engine'])) {
-            $this->renderingEngine = (string) $data['rendering_engine'];
-        }
     }
 }

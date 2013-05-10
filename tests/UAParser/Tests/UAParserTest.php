@@ -24,5 +24,7 @@ class UAParserTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('UAParser\Result\BrowserResultInterface', $result->getBrowser());
         $this->assertInstanceOf('UAParser\Result\EmailClientResult', $result->getEmailClient());
         $this->assertInstanceOf('UAParser\Result\EmailClientResultInterface', $result->getEmailClient());
+        $this->assertInstanceOf('UAParser\Result\RenderingEngineResult', $result->getRenderingEngine());
+        $this->assertInstanceOf('UAParser\Result\RenderingEngineResultInterface', $result->getRenderingEngine());
     }
 }

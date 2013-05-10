@@ -9,18 +9,17 @@ browser_parsers:
     - regex: '(Safari)/\d+'
     - regex: '(MSIE) (\d+)\.(\d+)'
       family_replacement: Internet Explorer
+    - regex: '(konqueror)\/(\d+)\.(\d+)(?:\.(\d+))?'
 
 rendering_engine_parsers:
-    - regex: '(Gecko)'
-    - regex: '(Trident)'
-    - regex: '(Presto|Windows 98)'
-      rendering_engine_replacement: Presto
-    - regex: '(WebKit)'
-    - regex: '(MSIE)'
-      rendering_engine_replacement: Trident
+    - regex: 'rv\:([\w\.]+).*(Gecko)'
+      family_replacement: $2
+      version_replacement: $1
+    # - regex: '(presto)\/([\w\.]+)/i'
+    - regex: '(webkit|trident)\/([\w\.]+)'
     - regex: '(MSOffice 12)'
-      rendering_engine_replacement: Microsoft Word
-    - regex: '(Tasman)'
+      family_replacement: Microsoft Word
+    - regex: '(khtml|tasman|links)[/ ]([\w\.]+)?'
 
 device_parsers:
     - regex: '(RIM Tablet OS)'
@@ -46,6 +45,10 @@ device_parsers:
       type_replacement: mobile
 
 operating_system_parsers:
+    - regex: '(Symbian[ ]?os)/(\d+)\.(\d+)'
+      family_replacement: 'Symbian'
+    - regex: '(Symbian OS)'
+      family_replacement: 'Symbian'
     - regex: '(Black[bB]erry).+Version/(\d+)\.(\d+)\.(\d+)'
       family_replacement: 'BlackBerry OS'
     - regex: '(Black[Bb]erry)[0-9a-z]+/(\d+)\.(\d+)\.(\d+)(?:\.(\d+))?'

@@ -20,7 +20,7 @@ class BrowserParserTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider browserDataProvider
      */
-    public function testBrowserParser($uaString, $expectedFamily, $expectedMajor, $expectedMinor, $expectedPatch, $expectedRenderingEngine)
+    public function testBrowserParser($uaString, $expectedFamily, $expectedMajor, $expectedMinor, $expectedPatch)
     {
         $result = $this->uaParser->parse($uaString);
 
@@ -28,7 +28,6 @@ class BrowserParserTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expectedMajor, $result->getBrowser()->getMajor());
         $this->assertEquals($expectedMinor, $result->getBrowser()->getMinor());
         $this->assertEquals($expectedPatch, $result->getBrowser()->getPatch());
-        $this->assertEquals($expectedRenderingEngine, $result->getBrowser()->getRenderingEngine());
     }
 
     public function browserDataProvider()

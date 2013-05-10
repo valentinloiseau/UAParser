@@ -25,3 +25,7 @@
 - ['Mozilla/5.0 (BlackBerry; U; BlackBerry 9900; en) AppleWebKit/534.11+ (KHTML, like Gecko) Version/7.1.0.346 Mobile Safari/534.11+', BlackBerry OS, 7, 1, 0]
 - ['BlackBerry9700/5.0.0.862 Profile/MIDP-2.1 Configuration/CLDC-1.1 VendorID/331', BlackBerry OS, 5, 0, 0]
 - ['BlackBerry 9000: BlackBerry9000/4.6.0.65 Profile/MIDP-2.0 Configuration/CLDC-1.1 VendorID/102', BlackBerry OS, 4, 6, 0]
+
+- ['NokiaN-Gage/1.0 SymbianOS/6.1 Series60/1.2 Profile/MIDP-1.0 Configuration/CLDC-1.0', Symbian, 6, 1, null]
+- ['Mozilla/5.0 (SymbianOS/9.4; U; Series60/5.0 Nokia5800d-1b/20.2.014; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) AppleWebKit/413 (KHTML, like Gecko) Safari/413', Symbian, 9, 4, null]
+- ['SonyEricssonP1i/R100 Mozilla 4.0 (compatibile; MSIE 6.0; Symbian OS;768) Opera 8.65 [hr]', Symbian, null, null, null]

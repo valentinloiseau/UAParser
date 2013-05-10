@@ -15,6 +15,8 @@ class Result implements ResultInterface
 
     private $emailClient = null;
 
+    private $renderingEngine = null;
+
     public function getBrowser()
     {
         return $this->browser;
@@ -33,6 +35,11 @@ class Result implements ResultInterface
     public function getEmailClient()
     {
         return $this->emailClient;
+    }
+
+    public function getRenderingEngine()
+    {
+        return $this->renderingEngine;
     }
 
     /**
@@ -55,6 +62,10 @@ class Result implements ResultInterface
         if (isset($data['email_client'])) {
             $this->emailClient = new EmailClientResult();
             $this->emailClient->fromArray($data['email_client']);
+        }
+        if (isset($data['rendering_engine'])) {
+            $this->renderingEngine = new RenderingEngineResult();
+            $this->renderingEngine->fromArray($data['rendering_engine']);
         }
     }
 }
