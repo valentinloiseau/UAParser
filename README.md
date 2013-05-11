@@ -63,11 +63,15 @@ $result =  $uaParser->parse('Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/
 ## Unit Tests
 
 To run unit tests, you'll need cURL and a set of dependencies you can install using Composer:
-    curl -sS https://getcomposer.org/installer | php
-    php composer.phar install
+```
+curl -sS https://getcomposer.org/installer | php
+php composer.phar install
+```
 
 Once installed, just launch the following command:
-    phpunit
+```
+phpunit
+```
 
 You're done.
 
