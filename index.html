@@ -28,32 +28,165 @@
         </ul>
       </header>
       <section>
-        <h3>Welcome to GitHub Pages.</h3>
+        <h1>UAParser <a href="http://travis-ci.org/yzalis/UAParser"><img src="https://secure.travis-ci.org/yzalis/UAParser.png" alt="Build Status"></a>
+</h1>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p><strong>UAParser</strong> is a library which helps you to parse user agents and detect browser, operating system, device and more.</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<h2>Basic Usage</h2>
+
+<div class="highlight"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="c1">// create a new UAParser instance</span>
+<span class="nv">$uaParser</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\UAParser\UAParser</span><span class="p">();</span>
+
+<span class="c1">// parse a user agent string an get the result</span>
+<span class="nv">$result</span> <span class="o">=</span>  <span class="nv">$uaParser</span><span class="o">-&gt;</span><span class="na">parse</span><span class="p">(</span><span class="s1">'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20130406 Firefox/23.0.1'</span><span class="p">);</span>
+</pre></div>
+
+<h2>Results</h2>
+
+<h3>Global Result API</h3>
+
+<ul>
+<li>
+<code>$result-&gt;getBrowser()</code> will return a <code>UAParser\Result\BrowserResult</code> object</li>
+<li>
+<code>$result-&gt;getOperatingSystem()</code> will return a <code>UAParser\Result\OperatingSystemResult</code> object</li>
+<li>
+<code>$result-&gt;getDevice()</code> will return a <code>UAParser\Result\DeviceResult</code> object</li>
+<li>
+<code>$result-&gt;getRenderingEngine()</code> will return a <code>UAParser\Result\RenderingEngineResult</code> object</li>
+<li>
+<code>$result-&gt;getEmailClient()</code> will return a <code>UAParser\Result\EmailClientResult</code> object</li>
+</ul><h3>Browser</h3>
+
+<ul>
+<li>
+<code>$result-&gt;getBrowser()-&gt;getFamily()</code> will return a string like <code>Firefox</code>
+</li>
+<li>
+<code>$result-&gt;getBrowser()-&gt;getMajor()</code> will return an integer like <code>23</code>
+</li>
+<li>
+<code>$result-&gt;getBrowser()-&gt;getMinor()</code> will return an integer like <code>0</code>
+</li>
+<li>
+<code>$result-&gt;getBrowser()-&gt;getPatch()</code> will return an integer like <code>1</code>
+</li>
+</ul><h3>Operating System</h3>
+
+<ul>
+<li>
+<code>$result-&gt;getOperatingSystem()-&gt;getFamily()</code> will return a string like <code>Mac OS</code>
+</li>
+<li>
+<code>$result-&gt;getOperatingSystem()-&gt;getMajor()</code> will return a string like <code>10</code>
+</li>
+<li>
+<code>$result-&gt;getOperatingSystem()-&gt;getMinor()</code> will return a string like <code>8</code>
+</li>
+<li>
+<code>$result-&gt;getOperatingSystem()-&gt;getPatch()</code> will return a string like <code>4</code>
+</li>
+</ul><h3>Device</h3>
+
+<ul>
+<li>
+<code>$result-&gt;getDevice()-&gt;getConstructor()</code> will return a string like <code>Apple</code>
+</li>
+<li>
+<code>$result-&gt;getDevice()-&gt;getModel()</code> will return a string like <code>iPhone</code>
+</li>
+<li>
+<code>$result-&gt;getDevice()-&gt;getType()</code> will return a string like <code>mobile</code>
+</li>
+<li>
+<code>$result-&gt;getDevice()-&gt;isMobile()</code> will return a boolean like <code>true</code>
+</li>
+<li>
+<code>$result-&gt;getDevice()-&gt;isTablet()</code> will return a boolean like <code>false</code>
+</li>
+<li>
+<code>$result-&gt;getDevice()-&gt;isDesktop()</code> will return a boolean like <code>false</code>
+</li>
+<li>
+<code>$result-&gt;getDevice()-&gt;is('mobile')</code> will return a boolean like <code>false</code>
+</li>
+<li>
+<code>$result-&gt;getDevice()-&gt;is('tablet')</code> will return a boolean like <code>false</code>
+</li>
+<li>
+<code>$result-&gt;getDevice()-&gt;is('desktop')</code> will return a boolean like <code>false</code>
+</li>
+</ul><h3>EmailClient</h3>
+
+<ul>
+<li>
+<code>$result-&gt;getEmailClient()-&gt;getFamily()</code> will return a string like <code>Thunderbird</code>
+</li>
+<li>
+<code>$result-&gt;getEmailClient()-&gt;getMajor()</code> will return a string like <code>3</code>
+</li>
+<li>
+<code>$result-&gt;getEmailClient()-&gt;getMinor()</code> will return a string like <code>1</code>
+</li>
+<li>
+<code>$result-&gt;getEmailClient()-&gt;getPatch()</code> will return a string like <code>2</code>
+</li>
+<li>
+<code>$result-&gt;getEmailClient()-&gt;getType()</code> will return a string like <code>desktop</code>
+</li>
+<li>
+<code>$result-&gt;getEmailClient()-&gt;isDesktop()</code> will return a boolean like <code>true</code>
+</li>
+<li>
+<code>$result-&gt;getEmailClient()-&gt;isWebmail()</code> will return a boolean like <code>false</code>
+</li>
+<li>
+<code>$result-&gt;getEmailClient()-&gt;is('desktop')</code> will return a boolean like <code>true</code>
+</li>
+<li>
+<code>$result-&gt;getEmailClient()-&gt;is('webmail')</code> will return a boolean like <code>false</code>
+</li>
+</ul><h3>Rendering Engine</h3>
+
+<ul>
+<li>
+<code>$result-&gt;getRenderingEngine()-&gt;getFamily()</code> will return a string like <code>Trident</code>
+</li>
+<li>
+<code>$result-&gt;getRenderingEngine()-&gt;getVersion()</code> will return a string like <code>4.0</code>
+</li>
+</ul><h2>Unit Tests</h2>
+
+<p>To run unit tests, you'll need cURL and a set of dependencies you can install using Composer:</p>
+
+<pre><code>curl -sS https://getcomposer.org/installer | php
+php composer.phar install
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>Once installed, just launch the following command:</p>
 
-<h3>Designer Templates</h3>
+<pre><code>phpunit
+</code></pre>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>You're done.</p>
 
-<h3>Rather Drive Stick?</h3>
+<h2>Credits</h2>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<ul>
+<li>Benjamin Laugueux <a href="mailto:benjamin@yzalis.com">benjamin@yzalis.com</a>
+</li>
+<li><a href="https://github.com/yzalis/UAParser/contributors">All contributors</a></li>
+</ul><p>Thanks for providing a huge amount of data to run tests:</p>
 
-<h3>Authors and Contributors</h3>
+<ul>
+<li><a href="http://user-agent-string.info">http://user-agent-string.info</a></li>
+<li><a href="http://www.useragentstring.com">http://www.useragentstring.com</a></li>
+</ul><h2>License</h2>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<p>UAParser is released under the MIT License. See the bundled LICENSE file for details.</p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/yzalis">yzalis</a></p>
