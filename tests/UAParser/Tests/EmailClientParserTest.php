@@ -23,7 +23,7 @@ class EmailClientParserTest extends \PHPUnit_Framework_TestCase
     public function testEmailClientParser($uaString, $expectedFamily, $expectedMajor, $expectedMinor, $expectedPatch, $expectedType = 'desktop')
     {
         $result = $this->uaParser->parse($uaString);
-
+        
         $this->assertEquals($expectedFamily, $result->getEmailClient()->getFamily());
         $this->assertEquals($expectedMajor, $result->getEmailClient()->getMajor());
         $this->assertEquals($expectedMinor, $result->getEmailClient()->getMinor());

@@ -13,66 +13,65 @@ $uaParser = new \UAParser\UAParser();
 $result =  $uaParser->parse('Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20130406 Firefox/23.0.1');
 ```
 
-## Results API
+## Results
 
-`Result` API
-```php
-$result->getBrowser() // BrowserResult
-$result->getOperatingSystem() // OperatingSystemResult
-$result->getDevice() // DeviceResult
-```
+### Global Result API
+* `$result->getBrowser()` will return a `UAParser\Result\BrowserResult` object
+* `$result->getOperatingSystem()` will return a `UAParser\Result\OperatingSystemResult` object
+* `$result->getDevice()` will return a `UAParser\Result\DeviceResult` object
+* `$result->getRenderingEngine()` will return a `UAParser\Result\RenderingEngineResult` object
+* `$result->getEmailClient()` will return a `UAParser\Result\EmailClientResult` object
 
-`BrowserResult` API
-```php
-$result->getBowser()->getFamily() // Firefox
-$result->getBowser()->getMajor() // 23
-$result->getBowser()->getMinor() // 0
-$result->getBowser()->getPatch() // 1
-$result->getBowser()->getRenderingEngine() // Gecko
-```
+### Browser
+* `$result->getBrowser()->getFamily()` will return a string like `Firefox`
+* `$result->getBrowser()->getMajor()` will return an integer like `23`
+* `$result->getBrowser()->getMinor()` will return an integer like `0`
+* `$result->getBrowser()->getPatch()` will return an integer like `1`
 
-`OperatingSystemResult` API
-```php
-$result->getOperatingSystem()->getFamily() // Mac OS
-$result->getOperatingSystem()->getMajor() // 10
-$result->getOperatingSystem()->getMinor() // 8
-$result->getOperatingSystem()->getPatch() // 4
-```
+### Operating System
+* `$result->getOperatingSystem()->getFamily()` will return a string like `Mac OS`
+* `$result->getOperatingSystem()->getMajor()` will return a string like `10`
+* `$result->getOperatingSystem()->getMinor()` will return a string like `8`
+* `$result->getOperatingSystem()->getPatch()` will return a string like `4`
 
-`DeviceResult` API
-```php
-$result->getOperatingSystem()->getConstructor() // Apple
-$result->getOperatingSystem()->getModel() // iPhone
-$result->getOperatingSystem()->getType() // mobile
-$result->getOperatingSystem()->isMobile() // true
-$result->getOperatingSystem()->isTablet() // false
-$result->getOperatingSystem()->isDesktop() // false
-$result->getOperatingSystem()->is('mobile') // false
-$result->getOperatingSystem()->is('tablet') // false
-$result->getOperatingSystem()->is('desktop') // false
-```
+### Device
+* `$result->getDevice()->getConstructor()` will return a string like `Apple`
+* `$result->getDevice()->getModel()` will return a string like `iPhone`
+* `$result->getDevice()->getType()` will return a string like `mobile`
+* `$result->getDevice()->isMobile()` will return a boolean like `true`
+* `$result->getDevice()->isTablet()` will return a boolean like `false`
+* `$result->getDevice()->isDesktop()` will return a boolean like `false`
+* `$result->getDevice()->is('mobile')` will return a boolean like `false`
+* `$result->getDevice()->is('tablet')` will return a boolean like `false`
+* `$result->getDevice()->is('desktop')` will return a boolean like `false`
 
-`EmailClientResult` API
-```php
-$result->getEmailClient()->getFamily() // Thunderbird
-$result->getEmailClient()->getMajor() // 3
-$result->getEmailClient()->getMinor() // 1
-$result->getEmailClient()->getPatch() // 2
-$result->getEmailClient()->getType() // desktop
-$result->getEmailClient()->isDesktop() // true
-$result->getEmailClient()->isWebmail() // false
-$result->getEmailClient()->is('desktop') // true
-$result->getEmailClient()->is('webmail') // false
-```
+### EmailClient
+* `$result->getEmailClient()->getFamily()` will return a string like `Thunderbird`
+* `$result->getEmailClient()->getMajor()` will return a string like `3`
+* `$result->getEmailClient()->getMinor()` will return a string like `1`
+* `$result->getEmailClient()->getPatch()` will return a string like `2`
+* `$result->getEmailClient()->getType()` will return a string like `desktop`
+* `$result->getEmailClient()->isDesktop()` will return a boolean like `true`
+* `$result->getEmailClient()->isWebmail()` will return a boolean like `false`
+* `$result->getEmailClient()->is('desktop')` will return a boolean like `true`
+* `$result->getEmailClient()->is('webmail')` will return a boolean like `false`
+
+### Rendering Engine
+* `$result->getRenderingEngine()->getFamily()` will return a string like `Trident`
+* `$result->getRenderingEngine()->getVersion()` will return a string like `4.0`
 
 ## Unit Tests
 
 To run unit tests, you'll need cURL and a set of dependencies you can install using Composer:
-    curl -sS https://getcomposer.org/installer | php
-    php composer.phar install
+```
+curl -sS https://getcomposer.org/installer | php
+php composer.phar install
+```
 
 Once installed, just launch the following command:
-    phpunit
+```
+phpunit
+```
 
 You're done.
 

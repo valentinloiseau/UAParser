@@ -161,9 +161,9 @@ class UAParser implements UAParserInterface
                 if (!isset($matches[2])) { $matches[2] = null; }
                 if (!isset($matches[3])) { $matches[3] = null; }
 
-                $result['constructor'] = isset($expression['constructor_replacement']) ? str_replace('$1', $matches[1], $expression['constructor_replacement']) : $matches[1];
-                $result['model']       = isset($expression['model_replacement']) ? str_replace('$1', $matches[1], $expression['model_replacement']) : $matches[2];
-                $result['type']        = isset($expression['type_replacement']) ? $expression['type_replacement'] : $matches[3];
+                $result['constructor'] = isset($expression['constructor_replacement']) ? str_replace(array('$1', '$2'), array($matches[1], $matches[2]), $expression['constructor_replacement']) : $matches[1];
+                $result['model'] = isset($expression['model_replacement']) ? str_replace(array('$1', '$2'), array($matches[1], $matches[2]), $expression['model_replacement']) : $matches[2];
+                $result['type'] = isset($expression['type_replacement']) ? $expression['type_replacement'] : $matches[3];
 
                 return $result;
             }
