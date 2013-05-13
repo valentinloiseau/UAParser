@@ -15,7 +15,7 @@ rendering_engine_parsers:
     - regex: 'rv\:([\w\.]+).*(Gecko)'
       family_replacement: $2
       version_replacement: $1
-    # - regex: '(presto)\/([\w\.]+)/i'
+    - regex: '(presto)\/([\w\.]+)'
     - regex: '(webkit|trident)\/([\w\.]+)'
     - regex: '(MSOffice 12)'
       family_replacement: Microsoft Word
