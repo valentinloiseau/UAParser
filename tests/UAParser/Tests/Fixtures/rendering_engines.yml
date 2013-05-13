@@ -7,3 +7,5 @@
 
 - ['Mozilla/5.0 (compatible; Konqueror/3.5; Linux; X11; x86_64) KHTML/3.5.6 (like Gecko) (Kubuntu)', KHTML, 3.5.6]
 - ['Mozilla/5.0 (compatible; Konqueror/3.5; Linux; X11; x86_64) KHTML (like Gecko) (Kubuntu)', KHTML, null]
+
+- ['Opera/12.80 (Windows NT 5.1; U; en) Presto/2.10.289 Version/12.02', Presto, 2.10.289]

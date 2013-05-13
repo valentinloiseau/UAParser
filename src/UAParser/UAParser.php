@@ -42,9 +42,9 @@ class UAParser implements UAParserInterface
 
     /**
      * Parse the user agent an extract the browser informations
-     * 
+     *
      * @param string $userAgent the user agent string
-     * 
+     *
      * @return array
      */
     protected function parseBrowser($userAgent)
@@ -62,12 +62,12 @@ class UAParser implements UAParserInterface
                 if (!isset($matches[2])) { $matches[2] = null; }
                 if (!isset($matches[3])) { $matches[3] = null; }
                 if (!isset($matches[4])) { $matches[4] = null; }
-                
+
                 $result['family'] = isset($expression['family_replacement']) ? str_replace('$1', $matches[1], $expression['family_replacement']) : $matches[1];
                 $result['major']  = isset($expression['major_replacement']) ? $expression['major_replacement'] : $matches[2];
                 $result['minor']  = isset($expression['minor_replacement']) ? $expression['minor_replacement'] : $matches[3];
                 $result['patch']  = isset($expression['patch_replacement']) ? $expression['patch_replacement'] : $matches[4];
-                
+
                 return $result;
             }
         }
@@ -77,9 +77,9 @@ class UAParser implements UAParserInterface
 
     /**
      * Parse the user agent an extract the rendering engine informations
-     * 
+     *
      * @param string $userAgent the user agent string
-     * 
+     *
      * @return array
      */
     protected function parseRenderingEngine($userAgent)
@@ -90,7 +90,6 @@ class UAParser implements UAParserInterface
         );
 
         foreach ($this->regexes['rendering_engine_parsers'] as $expression) {
-            // var_dump(preg_match('/'.str_replace('/','\/',str_replace('\/','/', $expression['regex'])).'/i', $userAgent, $matches));exit;
             if (preg_match('/'.str_replace('/','\/',str_replace('\/','/', $expression['regex'])).'/i', $userAgent, $matches)) {
 
                 if (!isset($matches[1])) { $matches[1] = 'Other'; }
@@ -108,9 +107,9 @@ class UAParser implements UAParserInterface
 
     /**
      * Parse the user agent an extract the operating system informations
-     * 
+     *
      * @param string $userAgent the user agent string
-     * 
+     *
      * @return array
      */
     protected function parseOperatingsystem($userAgent)
@@ -128,7 +127,7 @@ class UAParser implements UAParserInterface
                 if (!isset($matches[2])) { $matches[2] = null; }
                 if (!isset($matches[3])) { $matches[3] = null; }
                 if (!isset($matches[4])) { $matches[4] = null; }
-                
+
                 $result['family'] = isset($expression['family_replacement']) ? str_replace('$1', $matches[1], $expression['family_replacement']) : $matches[1];
                 $result['major']  = isset($expression['major_replacement']) ? $expression['major_replacement'] : $matches[2];
                 $result['minor']  = isset($expression['minor_replacement']) ? $expression['minor_replacement'] : $matches[3];
@@ -143,9 +142,9 @@ class UAParser implements UAParserInterface
 
     /**
      * Parse the user agent an extract the device informations
-     * 
+     *
      * @param string $userAgent the user agent string
-     * 
+     *
      * @return array
      */
     protected function parseDevice($userAgent)
@@ -161,7 +160,7 @@ class UAParser implements UAParserInterface
                 if (!isset($matches[1])) { $matches[1] = 'Other'; }
                 if (!isset($matches[2])) { $matches[2] = null; }
                 if (!isset($matches[3])) { $matches[3] = null; }
-                
+
                 $result['constructor'] = isset($expression['constructor_replacement']) ? str_replace(array('$1', '$2'), array($matches[1], $matches[2]), $expression['constructor_replacement']) : $matches[1];
                 $result['model']       = isset($expression['model_replacement']) ? str_replace(array('$1', '$2'), array($matches[1], $matches[2]), $expression['model_replacement']) : $matches[2];
                 $result['type']        = isset($expression['type_replacement']) ? $expression['type_replacement'] : $matches[3];
@@ -174,11 +173,11 @@ class UAParser implements UAParserInterface
     }
 
     /**
-     * Parse the user agent and optionnaly the refere an extract the email client informations
-     * 
+     * Parse the user agent and optionnaly the referer an extract the email client informations
+     *
      * @param string $userAgent the user agent string
      * @param string|null $referer A request referer to parse.
-     * 
+     *
      * @return array
      */
     protected function parseEmailClient($userAgent, $referer = null)
@@ -197,7 +196,7 @@ class UAParser implements UAParserInterface
                 if (!isset($matches[3])) { $matches[3] = null; }
                 if (!isset($matches[4])) { $matches[4] = null; }
                 if (!isset($matches[5])) { $matches[5] = null; }
-                
+
                 $result['family'] = isset($expression['family_replacement']) ? str_replace('$1', $matches[1], $expression['family_replacement']) : $matches[1];
                 $result['major']  = isset($expression['major_replacement']) ? $expression['major_replacement'] : $matches[2];
                 $result['minor']  = isset($expression['minor_replacement']) ? $expression['minor_replacement'] : $matches[3];
@@ -215,7 +214,7 @@ class UAParser implements UAParserInterface
                 if (preg_match('/'.str_replace('/','\/',str_replace('\/','/', $emailClientRegexe['regex'])).'/i', $referer, $emailClientRefererMatches)) {
                     if (!isset($emailClientRefererMatches[1])) { $emailClientRefererMatches[1] = 'Other'; }
                     if (!isset($emailClientRefererMatches[2])) { $emailClientRefererMatches[2] = null; }
-                    
+
                     $result['family'] = isset($emailClientRegexe['family_replacement']) ? str_replace('$1', $emailClientRefererMatches[1], $emailClientRegexe['family_replacement']) : $emailClientRefererMatches[1];
                     $result['type']   = isset($emailClientRegexe['type_replacement']) ? $emailClientRegexe['type_replacement'] : $emailClientRefererMatches[2];
 
@@ -229,7 +228,7 @@ class UAParser implements UAParserInterface
 
     /**
      * Prepare the result set
-     * 
+     *
      * @param array $data An array of data.
      *
      * @return ResultInterface
