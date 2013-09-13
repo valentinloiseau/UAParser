@@ -11,6 +11,9 @@
 // create a new UAParser instance
 $uaParser = new \UAParser\UAParser();
 
+// ...or optionally load a custom regexes.yml file of your choice
+// $uaParser = new \UAParser\UAParser(__DIR__.'/../../custom_regexes.yml');
+
 // parse a user agent string an get the result
 $result =  $uaParser->parse('Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20130406 Firefox/23.0.1');
 ```
