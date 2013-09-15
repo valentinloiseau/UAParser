@@ -29,6 +29,7 @@ $result =  $uaParser->parse('Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/
 * `$result->getBrowser()->getMajor()` will return an integer like `23`
 * `$result->getBrowser()->getMinor()` will return an integer like `0`
 * `$result->getBrowser()->getPatch()` will return an integer like `1`
+* `$result->getBrowser()->getVersionString()` will return a string like `23.0.1`
 
 ### Operating System
 * `$result->getOperatingSystem()->getFamily()` will return a string like `Mac OS`
