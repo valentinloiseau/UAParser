@@ -18,10 +18,16 @@ class UAParser implements UAParserInterface
 
     /**
      * Constructor
+     *
+     * @param string $regexesPath
      */
-    public function __construct()
+    public function __construct($regexesPath = null)
     {
-        $this->regexes = Yaml::parse(__DIR__.'/../../regexes.yml');
+        if (null === $regexesPath) {
+            $regexesPath = __DIR__.'/../../regexes.yml';
+        }
+
+        $this->regexes = Yaml::parse($regexesPath);
     }
 
     /**
@@ -56,6 +62,10 @@ class UAParser implements UAParserInterface
             'patch'  => null,
         );
 
+        if (!isset($this->regexes['browser_parsers'])) {
+            return $result;
+        }
+
         foreach ($this->regexes['browser_parsers'] as $expression) {
             if (preg_match('/'.str_replace('/','\/',str_replace('\/','/', $expression['regex'])).'/i', $userAgent, $matches)) {
                 if (!isset($matches[1])) { $matches[1] = 'Other'; }
@@ -89,6 +99,10 @@ class UAParser implements UAParserInterface
             'version' => null,
         );
 
+        if (!isset($this->regexes['rendering_engine_parsers'])) {
+            return $result;
+        }
+
         foreach ($this->regexes['rendering_engine_parsers'] as $expression) {
             if (preg_match('/'.str_replace('/','\/',str_replace('\/','/', $expression['regex'])).'/i', $userAgent, $matches)) {
 
@@ -120,6 +134,10 @@ class UAParser implements UAParserInterface
             'minor'  => null,
             'patch'  => null,
         );
+
+        if (!isset($this->regexes['operating_system_parsers'])) {
+            return $result;
+        }
 
         foreach ($this->regexes['operating_system_parsers'] as $expression) {
             if (preg_match('/'.str_replace('/','\/',str_replace('\/','/', $expression['regex'])).'/i', $userAgent, $matches)) {
@@ -155,6 +173,10 @@ class UAParser implements UAParserInterface
             'type'        => null,
         );
 
+        if (!isset($this->regexes['device_parsers'])) {
+            return $result;
+        }
+
         foreach ($this->regexes['device_parsers'] as $expression) {
             if (preg_match('/'.str_replace('/','\/',str_replace('\/','/', $expression['regex'])).'/i', $userAgent, $matches)) {
                 if (!isset($matches[1])) { $matches[1] = 'Other'; }
@@ -188,6 +210,10 @@ class UAParser implements UAParserInterface
             'minor'  => null,
             'patch'  => null,
         );
+
+        if (!isset($this->regexes['email_client_parsers'])) {
+            return $result;
+        }
 
         foreach ($this->regexes['email_client_parsers'] as $expression) {
             if (preg_match('/'.str_replace('/','\/',str_replace('\/','/', $expression['regex'])).'/i', $userAgent, $matches)) {

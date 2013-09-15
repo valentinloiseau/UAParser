@@ -9,6 +9,37 @@ use UAParser\UAParser;
  */
 class UAParserTest extends \PHPUnit_Framework_TestCase
 {
+    public function testConstructorLoadsDefaultRegexesPath()
+    {
+        $uaParser = new UAParser();
+
+        $result = $uaParser->parse('Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.17 Safari/537.36');
+
+        $this->assertSame($result->getBrowser()->getFamily(), 'Chrome');
+    }
+
+    public function testConstructorLoadsCustomRegexesPath()
+    {
+        $uaParser = new UAParser(__DIR__.'/Fixtures/custom_regexes.yml');
+
+        $result = $uaParser->parse('Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.17 Safari/537.36');
+
+        $this->assertSame($result->getBrowser()->getFamily(), 'Chrome Custom Regex Path Test');
+    }
+
+    public function testCustomRegexesFileWithMissingCategoryKey()
+    {
+        $uaParser = new UAParser(__DIR__.'/Fixtures/empty_regexes.yml');
+
+        $result = $uaParser->parse('');
+
+        $this->assertSame('Other', $result->getBrowser()->getFamily());
+        $this->assertSame('Other', $result->getOperatingSystem()->getFamily());
+        $this->assertSame('Other', $result->getDevice()->getConstructor());
+        $this->assertSame('Other', $result->getEmailClient()->getFamily());
+        $this->assertSame('Other', $result->getRenderingEngine()->getFamily());
+    }
+
     public function testClass()
     {
         $uaParser = new UAParser();
