@@ -1,4 +1,6 @@
 browser_parsers:
+    - regex: '(CriOS)/(\d+)\.(\d+)\.(\d+)'
+      family_replacement: Chrome
     - regex: '(Opera)/9.80.*Version/(\d+)\.(\d+)(?:\.(\d+))?'
     - regex: '(Opera)[/\s](\d+)\.(\d+)'
     - regex: '(Firefox)/(\d+)\.(\d+)\.(\d+)'
@@ -8,6 +10,8 @@ browser_parsers:
       family_replacement: Safari
     - regex: '(Safari)/\d+'
     - regex: '(MSIE) (\d+)\.(\d+)'
+      family_replacement: Internet Explorer
+    - regex: 'Trident/(.*); rv:(\d+)\.(\d+)'
       family_replacement: Internet Explorer
     - regex: '(konqueror)\/(\d+)\.(\d+)(?:\.(\d+))?'
 
