@@ -11,6 +11,8 @@ browser_parsers:
     - regex: '(Safari)/\d+'
     - regex: '(MSIE) (\d+)\.(\d+)'
       family_replacement: Internet Explorer
+    - regex: 'Trident/(.*); rv:(\d+)\.(\d+)'
+      family_replacement: Internet Explorer
     - regex: '(konqueror)\/(\d+)\.(\d+)(?:\.(\d+))?'
 
 rendering_engine_parsers:
