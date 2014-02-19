@@ -1,4 +1,6 @@
 browser_parsers:
+    - regex: '(CriOS)/(\d+)\.(\d+)\.(\d+)'
+      family_replacement: Chrome
     - regex: '(Opera)/9.80.*Version/(\d+)\.(\d+)(?:\.(\d+))?'
     - regex: '(Opera)[/\s](\d+)\.(\d+)'
     - regex: '(Firefox)/(\d+)\.(\d+)\.(\d+)'
