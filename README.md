@@ -76,7 +76,7 @@ php composer.phar install
 
 Once installed, just launch the following command:
 ```
-phpunit
+./vendor/bin/phpunit
 ```
 
 You're done.
