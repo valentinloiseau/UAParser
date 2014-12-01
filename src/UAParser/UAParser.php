@@ -27,7 +27,7 @@ class UAParser implements UAParserInterface
             $regexesPath = __DIR__.'/../../regexes.yml';
         }
 
-        $this->regexes = Yaml::parse($regexesPath);
+        $this->regexes = Yaml::parse(file_get_contents($regexesPath));
     }
 
     /**
