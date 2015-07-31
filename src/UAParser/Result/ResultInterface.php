@@ -7,10 +7,19 @@ namespace UAParser\Result;
  */
 interface ResultInterface
 {
+    /**
+     * @return BrowserResultInterface
+     */
     public function getBrowser();
 
+    /**
+     * @return OperatingSystemResultInterface
+     */
     public function getOperatingSystem();
 
+    /**
+     * @return DeviceResultInterface
+     */
     public function getDevice();
 
     /**
