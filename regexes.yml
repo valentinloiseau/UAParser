@@ -156,3 +156,9 @@ email_client_parsers:
     - regex: '(sfr.fr)'
       family_replacement: SFR
       type_replacement: webmail
+    - regex: '(via ggpht.com GoogleImageProxy)'
+      family_replacement: Gmail
+      type_replacement: webmail
+    - regex: '(SeznamEmailProxy)'
+      family_replacement: Seznam
+      type_replacement: webmail
