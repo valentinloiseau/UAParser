@@ -32,6 +32,6 @@ class BrowserParserTest extends \PHPUnit_Framework_TestCase
 
     public function browserDataProvider()
     {
-        return Yaml::parse(__DIR__.'/Fixtures/browsers.yml');
+        return Yaml::parse(file_get_contents(__DIR__.'/Fixtures/browsers.yml'));
     }
 }
