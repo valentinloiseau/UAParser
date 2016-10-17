@@ -31,6 +31,6 @@ class DeviceParserTest extends \PHPUnit_Framework_TestCase
 
     public function deviceDataProvider()
     {
-        return Yaml::parse(__DIR__.'/Fixtures/devices.yml');
+        return Yaml::parse(file_get_contents(__DIR__.'/Fixtures/devices.yml'));
     }
 }

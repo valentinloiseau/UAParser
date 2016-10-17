@@ -32,6 +32,6 @@ class OperatingSystemParserTest extends \PHPUnit_Framework_TestCase
 
     public function operatingSystemDataProvider()
     {
-        return Yaml::parse(__DIR__.'/Fixtures/operating_systems.yml');
+        return Yaml::parse(file_get_contents(__DIR__.'/Fixtures/operating_systems.yml'));
     }
 }

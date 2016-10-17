@@ -30,6 +30,6 @@ class RenderingEngineParserTest extends \PHPUnit_Framework_TestCase
 
     public function renderingEngineDataProvider()
     {
-        return Yaml::parse(__DIR__.'/Fixtures/rendering_engines.yml');
+        return Yaml::parse(file_get_contents(__DIR__.'/Fixtures/rendering_engines.yml'));
     }
 }

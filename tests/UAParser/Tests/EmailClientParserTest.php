@@ -33,7 +33,7 @@ class EmailClientParserTest extends \PHPUnit_Framework_TestCase
 
     public function emailClientDataProvider()
     {
-        return Yaml::parse(__DIR__.'/Fixtures/email_clients.yml');
+        return Yaml::parse(file_get_contents(__DIR__.'/Fixtures/email_clients.yml'));
     }
         
     /**
@@ -49,6 +49,6 @@ class EmailClientParserTest extends \PHPUnit_Framework_TestCase
 
     public function emailClientRefererDataProvider()
     {
-        return Yaml::parse(__DIR__.'/Fixtures/referers.yml');
+        return Yaml::parse(file_get_contents(__DIR__.'/Fixtures/referers.yml'));
     }
 }
