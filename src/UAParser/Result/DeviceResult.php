@@ -11,12 +11,12 @@ class DeviceResult implements DeviceResultInterface
      * @var string
      */
     private $constructor = null;
-    
+
     /**
      * @var string
      */
     private $model = null;
-    
+
     /**
      * @var string
      */
@@ -24,7 +24,7 @@ class DeviceResult implements DeviceResultInterface
 
     /**
      * To string
-     * 
+     *
      * @return string
      */
     public function __toString()
@@ -69,7 +69,7 @@ class DeviceResult implements DeviceResultInterface
 
     /**
      * Check if the device is a mobile
-     * 
+     *
      * @return boolean
      */
     public function isMobile()
@@ -79,7 +79,7 @@ class DeviceResult implements DeviceResultInterface
 
     /**
      * Check if the device is a tablet
-     * 
+     *
      * @return boolean
      */
     public function isTablet()
@@ -89,7 +89,7 @@ class DeviceResult implements DeviceResultInterface
 
     /**
      * Check if the device is a desktop computer
-     * 
+     *
      * @return boolean
      */
     public function isDesktop()

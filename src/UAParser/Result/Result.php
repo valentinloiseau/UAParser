@@ -10,7 +10,7 @@ use Doctrine\Common\Inflector\Inflector;
 class Result implements ResultInterface
 {
     private $browser = null;
-    
+
     private $operatingSystem = null;
 
     private $device = null;

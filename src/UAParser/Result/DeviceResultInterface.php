@@ -32,7 +32,7 @@ interface DeviceResultInterface
      * Check the device type.
      *
      * @param string $type Check if type is (mobile|tablet|desktop)
-     * 
+     *
      * @return boolean
      */
     public function is($type);

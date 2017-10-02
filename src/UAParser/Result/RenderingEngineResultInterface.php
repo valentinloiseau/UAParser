@@ -13,7 +13,7 @@ interface RenderingEngineResultInterface
      * @return string
      */
     public function getFamily();
-    
+
     /**
      * Returns the rendering engine version.
      *

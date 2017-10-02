@@ -16,7 +16,7 @@ class RenderingEngineResult implements RenderingEngineResultInterface
      * @var string
      */
     private $version = null;
-    
+
     /**
      * {@inheritDoc}
      */
@@ -24,7 +24,7 @@ class RenderingEngineResult implements RenderingEngineResultInterface
     {
         return $this->family;
     }
-    
+
     /**
      * {@inheritDoc}
      */

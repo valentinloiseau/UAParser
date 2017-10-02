@@ -11,22 +11,22 @@ class EmailClientResult implements EmailClientResultInterface
      * @var string
      */
     private $family = null;
-    
+
     /**
      * @var string
      */
     private $major = null;
-    
+
     /**
      * @var string
      */
     private $minor = null;
-    
+
     /**
      * @var string
      */
     private $patch = null;
-    
+
     /**
      * @var string
      */
@@ -64,7 +64,7 @@ class EmailClientResult implements EmailClientResultInterface
     {
         return $this->minor;
     }
-    
+
     /**
      * {@inheritDoc}
      */
@@ -91,7 +91,7 @@ class EmailClientResult implements EmailClientResultInterface
 
     /**
      * Check if the email client is a wemail
-     * 
+     *
      * @return boolean
      */
     public function isWebmail()
@@ -101,7 +101,7 @@ class EmailClientResult implements EmailClientResultInterface
 
     /**
      * Check if the email client is a desktop software
-     * 
+     *
      * @return boolean
      */
     public function isDesktop()

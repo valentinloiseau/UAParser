@@ -46,7 +46,7 @@ interface EmailClientResultInterface
      * Check the email client type.
      *
      * @param string $type Check if type is (webmail|desktop)
-     * 
+     *
      * @return boolean
      */
     public function is($type);

@@ -11,17 +11,17 @@ class OperatingSystemResult implements OperatingSystemResultInterface
      * @var string
      */
     private $family = null;
-    
+
     /**
      * @var string
      */
     private $major = null;
-    
+
     /**
      * @var string
      */
     private $minor = null;
-    
+
     /**
      * @var string
      */
@@ -50,7 +50,7 @@ class OperatingSystemResult implements OperatingSystemResultInterface
     {
         return $this->minor;
     }
-    
+
     /**
      * {@inheritDoc}
      */
